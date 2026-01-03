@@ -2,10 +2,10 @@
 
 # 🎮 Gaming Zone
 
-[![Live Site](https://img.shields.io/badge/🌐_Live_Site-https://usamatahir23.github.io/gamingzone/-blue?style=for-the-badge)](https://usamatahir23.github.io/gamingzone/)
+[![Live Site](https://img.shields.io/badge/🌐_Live_Site-Visit_Now-blue?style=for-the-badge&logo=chrome)](https://usamatahir23.github.io/gamingzone/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/Usamatahir23/gamingzone)
 
-![Gaming Zone](https://usamatahir23.github.io/gamingzone/og-image.png)
+[![Gaming Zone Preview](https://usamatahir23.github.io/gamingzone/preview.png)](https://usamatahir23.github.io/gamingzone/)
 
 **A fun web app with 10 different games you can play in your browser.**
 
