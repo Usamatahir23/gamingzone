@@ -30,10 +30,6 @@ npm run build
 
 This creates a `dist` folder with all the files ready to deploy.
 
-## Deployment
-
-You can deploy this to Netlify or Vercel - just connect your GitHub repo and they'll handle the rest. The config files are already set up.
-
 ## Tech Stack
 
 - React + TypeScript
