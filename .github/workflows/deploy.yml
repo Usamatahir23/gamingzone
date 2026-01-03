@@ -36,6 +36,14 @@ jobs:
       - name: Build project
         run: npm run build
         
+      - name: Verify build output
+        run: |
+          echo "Build output:"
+          ls -la dist/
+          echo "---"
+          echo "index.html content:"
+          head -15 dist/index.html
+        
       - name: Setup Pages
         uses: actions/configure-pages@v4
         
