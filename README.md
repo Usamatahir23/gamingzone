@@ -7,7 +7,7 @@
 
 <div align="center">
 
-[![Gaming Zone Home Screen](screenshot.png)](https://usamatahir23.github.io/gamingzone/)
+[![Gaming Zone Home Screen](https://raw.githubusercontent.com/Usamatahir23/gamingzone/main/screenshot.png)](https://usamatahir23.github.io/gamingzone/)
 
 *Click the image to visit the live site*
 
