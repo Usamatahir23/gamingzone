@@ -5,9 +5,7 @@
 [![Live Site](https://img.shields.io/badge/🌐_Live_Site-Visit_Now-blue?style=for-the-badge&logo=chrome)](https://usamatahir23.github.io/gamingzone/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/Usamatahir23/gamingzone)
 
-[<img src="https://raw.githubusercontent.com/Usamatahir23/gamingzone/main/screenshot.png" alt="Gaming Zone Preview" width="800" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);"/>](https://usamatahir23.github.io/gamingzone/)
-
-> 💡 **Tip:** If you don't see an image above, you can add a screenshot by taking one of your live site and saving it as `screenshot.png` in the root of your repository.
+### 🎯 [Visit Live Site →](https://usamatahir23.github.io/gamingzone/)
 
 **A fun web app with 10 different games you can play in your browser.**
 
