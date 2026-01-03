@@ -1,6 +1,17 @@
-# Gaming Zone 🎮
+<div align="center">
 
-A fun web app with 10 different games you can play in your browser.
+# 🎮 Gaming Zone
+
+[![Live Site](https://img.shields.io/badge/🌐_Live_Site-https://usamatahir23.github.io/gamingzone/-blue?style=for-the-badge)](https://usamatahir23.github.io/gamingzone/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/Usamatahir23/gamingzone)
+
+![Gaming Zone](https://usamatahir23.github.io/gamingzone/og-image.png)
+
+**A fun web app with 10 different games you can play in your browser.**
+
+[🚀 Play Now](https://usamatahir23.github.io/gamingzone/) • [📖 Documentation](#getting-started) • [💻 Tech Stack](#tech-stack)
+
+</div>
 
 ## What's Inside
 
