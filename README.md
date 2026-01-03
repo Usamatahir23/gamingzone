@@ -5,6 +5,14 @@
 [![Live Site](https://img.shields.io/badge/🌐_Live_Site-Visit_Now-blue?style=for-the-badge&logo=chrome)](https://usamatahir23.github.io/gamingzone/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/Usamatahir23/gamingzone)
 
+<div align="center">
+
+[![Gaming Zone Home Screen](screenshot.png)](https://usamatahir23.github.io/gamingzone/)
+
+*Click the image to visit the live site*
+
+</div>
+
 ### 🎯 [Visit Live Site →](https://usamatahir23.github.io/gamingzone/)
 
 **A fun web app with 10 different games you can play in your browser.**
