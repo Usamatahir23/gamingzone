@@ -30,6 +30,15 @@ npm run build
 
 This creates a `dist` folder with all the files ready to deploy.
 
+## Backend Deployment
+
+The backend server can be deployed to:
+- **Railway**: Connect your GitHub repo, add PostgreSQL, and deploy
+- **Render**: Use the `render.yaml` config in the `server/` folder
+- **Fly.io**: Use `fly launch` in the `server/` directory
+
+The frontend is configured to work with the mock database (localStorage) by default, but can be switched to use the real API by setting the `VITE_API_URL` environment variable.
+
 ## Tech Stack
 
 - React + TypeScript

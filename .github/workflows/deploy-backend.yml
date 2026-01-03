@@ -1,0 +1,28 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'server/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Deploy to Railway
+        run: |
+          echo "Backend deployment would go here"
+          echo "Set up Railway CLI or use Railway's GitHub integration"
+          echo "Or deploy to Render, Fly.io, or other platforms"
+
