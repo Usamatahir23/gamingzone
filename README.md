@@ -5,7 +5,7 @@
 [![Live Site](https://img.shields.io/badge/🌐_Live_Site-Visit_Now-blue?style=for-the-badge&logo=chrome)](https://usamatahir23.github.io/gamingzone/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/Usamatahir23/gamingzone)
 
-[<img src="https://api.screenshotone.com/take?access_key=YOUR_KEY&url=https://usamatahir23.github.io/gamingzone/&viewport_width=1280&viewport_height=720&device_scale_factor=1&format=png&image_quality=80&block_ads=true&block_cookie_banners=true&block_trackers=true&delay=2000" alt="Gaming Zone Preview" width="800"/>](https://usamatahir23.github.io/gamingzone/)
+[<img src="https://image.thum.io/get/width/1200/crop/600/https://usamatahir23.github.io/gamingzone/" alt="Gaming Zone Preview" width="800" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);"/>](https://usamatahir23.github.io/gamingzone/)
 
 **A fun web app with 10 different games you can play in your browser.**
 
