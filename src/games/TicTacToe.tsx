@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '../components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
-import { Grid3x3, Trophy, RotateCcw } from 'lucide-react'
+import { Grid3x3, RotateCcw } from 'lucide-react'
 
 interface TicTacToeProps {
   onComplete: (score: number) => void

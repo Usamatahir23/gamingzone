@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Button } from './components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from './components/ui/card'
 import { Input } from './components/ui/input'
 import { Label } from './components/ui/label'
-import { Avatar, AvatarFallback, AvatarImage } from './components/ui/avatar'
+import { Avatar, AvatarFallback } from './components/ui/avatar'
 import { 
   Gamepad2, 
   Trophy, 
@@ -15,7 +15,6 @@ import {
   Grid3x3,
   Star,
   LogOut,
-  User,
   Play,
   BarChart3,
   Medal,

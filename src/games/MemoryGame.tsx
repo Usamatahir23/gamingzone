@@ -2,8 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '../components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select'
-import { Clock, Trophy, RotateCcw } from 'lucide-react'
+import { Clock, RotateCcw } from 'lucide-react'
 
 interface Card {
   id: number
@@ -56,7 +55,7 @@ export default function MemoryGame({ onComplete }: Props) {
   }, [initializeGame])
 
   useEffect(() => {
-    let interval: NodeJS.Timeout
+    let interval: ReturnType<typeof setInterval>
     if (isPlaying && matches < cards.length / 2) {
       interval = setInterval(() => {
         setTime(prev => prev + 1)
@@ -135,16 +134,15 @@ export default function MemoryGame({ onComplete }: Props) {
           <CardTitle className="text-white flex items-center justify-between">
             <span>Memory Match</span>
             <div className="flex gap-2">
-              <Select value={difficulty} onValueChange={(value: 'easy' | 'medium' | 'hard') => setDifficulty(value)}>
-                <SelectTrigger className="w-32 bg-white/10 border-white/20">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="easy">Easy</SelectItem>
-                  <SelectItem value="medium">Medium</SelectItem>
-                  <SelectItem value="hard">Hard</SelectItem>
-                </SelectContent>
-              </Select>
+              <select 
+                value={difficulty} 
+                onChange={(e) => setDifficulty(e.target.value as 'easy' | 'medium' | 'hard')}
+                className="w-32 bg-white/10 border-white/20 text-white rounded-md px-3 py-2 text-sm"
+              >
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+              </select>
               <Button onClick={initializeGame} className="bg-purple-600 hover:bg-purple-700">
                 <RotateCcw className="w-4 h-4 mr-2" />
                 New Game

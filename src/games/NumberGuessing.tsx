@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { Button } from '../components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Input } from '../components/ui/input'
-import { Target, TrendingUp, CheckCircle, XCircle } from 'lucide-react'
+import { Target } from 'lucide-react'
 
 interface NumberGuessingProps {
   onComplete: (score: number) => void

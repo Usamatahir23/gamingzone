@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '../components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
-import { Brain, Volume2 } from 'lucide-react'
+import { Brain } from 'lucide-react'
 
 interface SimonSaysProps {
   onComplete: (score: number) => void
