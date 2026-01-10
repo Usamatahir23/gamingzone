@@ -26,8 +26,11 @@ const ReactionTime: React.FC<ReactionTimeProps> = ({ onComplete }) => {
     if (state === 'finished' && reactionTimes.length === MAX_ROUNDS && averageTime === null) {
       const avg = reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length
       setAverageTime(avg)
+      // Save score automatically when game finishes
+      const finalScore = Math.max(10000 - Math.round(avg * 10), 0)
+      onComplete(finalScore)
     }
-  }, [state, reactionTimes, averageTime])
+  }, [state, reactionTimes, averageTime, onComplete])
 
   const startRound = () => {
     setState('waiting')
@@ -180,11 +183,11 @@ const ReactionTime: React.FC<ReactionTimeProps> = ({ onComplete }) => {
                 </Button>
                 <Button
                   onClick={() => {
+                    // Score already saved in useEffect, just trigger navigation by calling onComplete again
+                    // The App.tsx "Back to Games" button should work, but this ensures navigation
                     if (averageTime !== null) {
                       const finalScore = Math.max(10000 - Math.round(averageTime * 10), 0)
                       onComplete(finalScore)
-                    } else {
-                      onComplete(0)
                     }
                   }}
                   className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-6 text-lg"
