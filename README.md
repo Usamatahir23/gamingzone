@@ -65,4 +65,20 @@ The frontend is configured to work with the mock database (localStorage) by defa
 - Tailwind CSS for styling
 - Framer Motion for animations
 
+## Features
+
+- 🎮 **10 Fun Games**: Variety of classic and modern games
+- 📊 **Score Tracking**: Track your progress and high scores
+- 🎯 **Player Profiles**: Personalized gaming experience
+- 🎨 **Beautiful UI**: Clean and modern interface
+- ⚡ **Fast Performance**: Built with Vite for optimal speed
+- 📱 **Responsive Design**: Works on desktop and mobile
+
+## Contributors
+
+Thanks to everyone who has contributed to this project!
+
+- **Usama Tahir** - Project creator and main developer
+- **Talha Fayyaz** - UI/UX improvements and game enhancements
+
 That's it! Have fun playing the games.
