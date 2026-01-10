@@ -23,13 +23,11 @@ const ReactionTime: React.FC<ReactionTimeProps> = ({ onComplete }) => {
   const MAX_ROUNDS = 5
 
   useEffect(() => {
-    if (state === 'finished' && reactionTimes.length === MAX_ROUNDS) {
+    if (state === 'finished' && reactionTimes.length === MAX_ROUNDS && averageTime === null) {
       const avg = reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length
       setAverageTime(avg)
-      const finalScore = Math.max(10000 - Math.round(avg * 10), 0)
-      onComplete(finalScore)
     }
-  }, [state, reactionTimes, onComplete])
+  }, [state, reactionTimes, averageTime])
 
   const startRound = () => {
     setState('waiting')
@@ -172,13 +170,28 @@ const ReactionTime: React.FC<ReactionTimeProps> = ({ onComplete }) => {
                 </div>
               )}
 
-              <Button
-                onClick={resetGame}
-                className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white px-8 py-6 text-lg"
-              >
-                <RotateCcw className="w-5 h-5 mr-2" />
-                Play Again
-              </Button>
+              <div className="flex gap-4 justify-center">
+                <Button
+                  onClick={resetGame}
+                  className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white px-8 py-6 text-lg"
+                >
+                  <RotateCcw className="w-5 h-5 mr-2" />
+                  Play Again
+                </Button>
+                <Button
+                  onClick={() => {
+                    if (averageTime !== null) {
+                      const finalScore = Math.max(10000 - Math.round(averageTime * 10), 0)
+                      onComplete(finalScore)
+                    } else {
+                      onComplete(0)
+                    }
+                  }}
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-6 text-lg"
+                >
+                  Back to Menu
+                </Button>
+              </div>
             </div>
           ) : (
             <div className="text-center space-y-6">

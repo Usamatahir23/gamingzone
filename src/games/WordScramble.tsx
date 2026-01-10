@@ -188,7 +188,7 @@ const WordScramble: React.FC<WordScrambleProps> = ({ onComplete }) => {
                   <Button
                     onClick={getHint}
                     variant="outline"
-                    className="border-white/20 text-white hover:bg-white/10"
+                    className="border-blue-500/50 bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 hover:text-blue-200"
                     disabled={!!hint}
                   >
                     Get Hint
@@ -196,7 +196,7 @@ const WordScramble: React.FC<WordScrambleProps> = ({ onComplete }) => {
                   <Button
                     onClick={nextWord}
                     variant="outline"
-                    className="border-white/20 text-white hover:bg-white/10"
+                    className="border-yellow-500/50 bg-yellow-500/20 text-yellow-300 hover:bg-yellow-500/30 hover:text-yellow-200"
                   >
                     Skip Word
                   </Button>
@@ -206,7 +206,7 @@ const WordScramble: React.FC<WordScrambleProps> = ({ onComplete }) => {
                       onComplete(score)
                     }}
                     variant="outline"
-                    className="border-red-500/50 text-red-400 hover:bg-red-500/20"
+                    className="border-red-500/50 bg-red-500/20 text-red-300 hover:bg-red-500/30 hover:text-red-200"
                   >
                     <RotateCcw className="w-4 h-4 mr-2" />
                     End Game
