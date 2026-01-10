@@ -81,12 +81,21 @@ class MockDatabaseService {
     
     if (playerScores.length > 0) {
       player.gamesPlayed = playerScores.length
-      player.totalScore = playerScores.reduce((sum, score) => sum + score.score, 0)
-      player.highScore = Math.max(...playerScores.map(s => s.score))
+      // Ensure all scores are valid numbers before calculating
+      const validScores = playerScores.map(s => isNaN(s.score) || s.score < 0 ? 0 : s.score)
+      player.totalScore = validScores.reduce((sum, score) => sum + score, 0)
+      player.highScore = Math.max(...validScores, 0)
       player.averageScore = player.totalScore / player.gamesPlayed
       
-      // Calculate level based on total score
-      player.level = Math.floor(player.totalScore / 100) + 1
+      // Calculate level based on total score (1 level per 100 points)
+      player.level = Math.max(Math.floor(player.totalScore / 100) + 1, 1)
+    } else {
+      // Reset to defaults if no scores
+      player.gamesPlayed = 0
+      player.totalScore = 0
+      player.highScore = 0
+      player.averageScore = 0
+      player.level = 1
     }
 
     return player
