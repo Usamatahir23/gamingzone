@@ -231,9 +231,12 @@ export default function App() {
 
   const handleGameComplete = async (score: number) => {
     if (!currentGame || !playerId) return
+    
+    // Ensure score is a valid number and not NaN
+    const validScore = isNaN(score) || score < 0 ? 0 : Math.round(score)
 
     try {
-      await mockDatabaseService.saveScore(playerId, currentGame.id, score)
+      await mockDatabaseService.saveScore(playerId, currentGame.id, validScore)
       await loadPlayerData(playerId)
     } catch (error) {
       console.error('Error saving score:', error)

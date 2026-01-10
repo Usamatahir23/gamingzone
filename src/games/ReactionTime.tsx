@@ -16,21 +16,13 @@ const ReactionTime: React.FC<ReactionTimeProps> = ({ onComplete }) => {
   const [currentReaction, setCurrentReaction] = useState<number | null>(null)
   const [round, setRound] = useState(0)
   const [averageTime, setAverageTime] = useState<number | null>(null)
+  const [scoreSaved, setScoreSaved] = useState(false)
   const startTimeRef = useRef<number | null>(null)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const readyTimeRef = useRef<number | null>(null)
 
   const MAX_ROUNDS = 5
 
-  useEffect(() => {
-    if (state === 'finished' && reactionTimes.length === MAX_ROUNDS && averageTime === null) {
-      const avg = reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length
-      setAverageTime(avg)
-      // Save score automatically when game finishes
-      const finalScore = Math.max(10000 - Math.round(avg * 10), 0)
-      onComplete(finalScore)
-    }
-  }, [state, reactionTimes, averageTime, onComplete])
 
   const startRound = () => {
     setState('waiting')
@@ -58,16 +50,48 @@ const ReactionTime: React.FC<ReactionTimeProps> = ({ onComplete }) => {
 
     if (state === 'ready' && readyTimeRef.current) {
       const reactionTime = Date.now() - readyTimeRef.current
-      setCurrentReaction(reactionTime)
-      setReactionTimes([...reactionTimes, reactionTime])
+      const newReactionTimes = [...reactionTimes, reactionTime]
       
-      if (round + 1 < MAX_ROUNDS) {
-        setRound(round + 1)
+      // Clear the ready time ref immediately to prevent double clicks
+      readyTimeRef.current = null
+      
+      // Update reaction time display
+      setCurrentReaction(reactionTime)
+      setReactionTimes(newReactionTimes)
+      
+      const nextRound = round + 1
+      
+      if (nextRound >= MAX_ROUNDS) {
+        // This is the last round (5th round), finish the game
+        setRound(MAX_ROUNDS - 1) // Keep round display correct at 5/5
+        
+        // Calculate average and score immediately
+        const avg = newReactionTimes.reduce((a, b) => a + b, 0) / newReactionTimes.length
+        setAverageTime(avg)
+        
+        // Reaction Time score: better times = higher scores (max 1500, min 100)
+        // Formula: 1500 - (avg in ms * 3), clamped between 100-1500
+        // Average < 250ms = 750-1500, 250-350ms = 450-750, 350-450ms = 150-450, >450ms = 100-150
+        const finalScore = Math.max(Math.min(Math.round(1500 - avg * 3), 1500), 100)
+        
+        // Save score once when finishing (prevent double-saving)
+        if (!scoreSaved) {
+          setScoreSaved(true)
+          onComplete(finalScore)
+        }
+        
+        // Set finished state after showing the reaction time result
+        // Use a longer delay to ensure state transitions properly
+        setTimeout(() => {
+          setState('finished')
+        }, 2000)
+      } else {
+        // Continue to next round - set state to waiting first to show the result
+        setState('waiting')
+        setRound(nextRound)
         setTimeout(() => {
           startRound()
         }, 1500)
-      } else {
-        setState('finished')
       }
     }
   }
@@ -75,12 +99,14 @@ const ReactionTime: React.FC<ReactionTimeProps> = ({ onComplete }) => {
   const resetGame = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
     }
     setState('waiting')
     setReactionTimes([])
     setCurrentReaction(null)
     setRound(0)
     setAverageTime(null)
+    setScoreSaved(false)
     startTimeRef.current = null
     readyTimeRef.current = null
   }
@@ -180,19 +206,6 @@ const ReactionTime: React.FC<ReactionTimeProps> = ({ onComplete }) => {
                 >
                   <RotateCcw className="w-5 h-5 mr-2" />
                   Play Again
-                </Button>
-                <Button
-                  onClick={() => {
-                    // Score already saved in useEffect, just trigger navigation by calling onComplete again
-                    // The App.tsx "Back to Games" button should work, but this ensures navigation
-                    if (averageTime !== null) {
-                      const finalScore = Math.max(10000 - Math.round(averageTime * 10), 0)
-                      onComplete(finalScore)
-                    }
-                  }}
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-6 text-lg"
-                >
-                  Back to Menu
                 </Button>
               </div>
             </div>
