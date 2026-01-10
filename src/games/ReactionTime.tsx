@@ -51,43 +51,43 @@ const ReactionTime: React.FC<ReactionTimeProps> = ({ onComplete }) => {
     if (state === 'ready' && readyTimeRef.current) {
       const reactionTime = Date.now() - readyTimeRef.current
       const newReactionTimes = [...reactionTimes, reactionTime]
+      const nextRound = round + 1
       
       // Clear the ready time ref immediately to prevent double clicks
       readyTimeRef.current = null
+      
+      // Immediately change state to waiting to stop the button from being clickable
+      setState('waiting')
       
       // Update reaction time display
       setCurrentReaction(reactionTime)
       setReactionTimes(newReactionTimes)
       
-      const nextRound = round + 1
-      
       if (nextRound >= MAX_ROUNDS) {
         // This is the last round (5th round), finish the game
         setRound(MAX_ROUNDS - 1) // Keep round display correct at 5/5
         
-        // Calculate average and score immediately
-        const avg = newReactionTimes.reduce((a, b) => a + b, 0) / newReactionTimes.length
-        setAverageTime(avg)
-        
-        // Reaction Time score: better times = higher scores (max 1500, min 100)
-        // Formula: 1500 - (avg in ms * 3), clamped between 100-1500
-        // Average < 250ms = 750-1500, 250-350ms = 450-750, 350-450ms = 150-450, >450ms = 100-150
-        const finalScore = Math.max(Math.min(Math.round(1500 - avg * 3), 1500), 100)
-        
-        // Save score once when finishing (prevent double-saving)
-        if (!scoreSaved) {
-          setScoreSaved(true)
-          onComplete(finalScore)
-        }
-        
-        // Set finished state after showing the reaction time result
-        // Use a longer delay to ensure state transitions properly
+        // Calculate average and score after showing the reaction time
         setTimeout(() => {
+          const avg = newReactionTimes.reduce((a, b) => a + b, 0) / newReactionTimes.length
+          setAverageTime(avg)
+          
+          // Reaction Time score: better times = higher scores (max 1500, min 100)
+          // Formula: 1500 - (avg in ms * 3), clamped between 100-1500
+          // Average < 250ms = 750-1500, 250-350ms = 450-750, 350-450ms = 150-450, >450ms = 100-150
+          const finalScore = Math.max(Math.min(Math.round(1500 - avg * 3), 1500), 100)
+          
+          // Save score only once when finishing (prevent double-saving)
+          if (!scoreSaved) {
+            setScoreSaved(true)
+            onComplete(finalScore)
+          }
+          
+          // Set finished state to show completion screen
           setState('finished')
-        }, 2000)
+        }, 1500)
       } else {
-        // Continue to next round - set state to waiting first to show the result
-        setState('waiting')
+        // Continue to next round
         setRound(nextRound)
         setTimeout(() => {
           startRound()
